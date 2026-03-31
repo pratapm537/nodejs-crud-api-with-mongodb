@@ -8,6 +8,12 @@ dotevn.config({
 const app = express()
 const port = process.env.PORT || 3000
 
+// middlewares
+app.set('view engine', 'view')
+// app.set('views', 'mydirectory')
+app.use(express.urlencoded({extended: true}))
+app.use(express.static('public'))
+
 // Routes
 app.get('/', (req,res) => {
     res.send("<h1>Welcome to Home Pages</h1>")
