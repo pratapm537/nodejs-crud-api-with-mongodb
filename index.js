@@ -20,7 +20,7 @@ app.get('/', (req,res) => {
 })
 
 app.get('/show-contact', (req,res) => {
-    res.send("Welcome To Show Contact Page")
+    res.render('show-contact')
 })
 
 app.get('/add-contact', (req,res) => {
