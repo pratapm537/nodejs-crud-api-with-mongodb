@@ -9,14 +9,14 @@ const app = express()
 const port = process.env.PORT || 3000
 
 // middlewares
-app.set('view engine', 'view')
+app.set('view engine', 'ejs')
 // app.set('views', 'mydirectory')
 app.use(express.urlencoded({extended: true}))
 app.use(express.static('public'))
 
 // Routes
 app.get('/', (req,res) => {
-    res.send("<h1>Welcome to Home Pages</h1>")
+    res.render('home')
 })
 
 app.get('/show-contact', (req,res) => {
@@ -24,23 +24,22 @@ app.get('/show-contact', (req,res) => {
 })
 
 app.get('/add-contact', (req,res) => {
-    res.send("Welcome to Add New Contact Page")
+    res.render('add-contact')
 })
 
 app.post('/add-contact',(req,res) => {
 
 })
 
-app.get('/delete-contact', (req,res) => {})
-
 app.get('/update-contact', (req,res) => {
-    res.send("Welcome to Update Contact Page")
+    res.render('update-contact')
 })
 
-app.post('/update-contact', (res,res) => {
-
+app.post('/update-contact', (req,res) => {
+    
 })
 
+app.get('/delete-contact', (req,res) => {})
 
 app.listen(port,() => {
     console.log(`server is running successful on http://localhost:${port}`)

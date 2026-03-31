@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Contacts</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <link rel="stylesheet" href="/assets/style.css">
+        
+</head>
+<body>
+
+<header class="app-header mb-5 bg-white p-3">
+    <h1 class="app-brand">CONTACT APP</h1>
+</header>
+
+<div class="container-fluid max-w-7xl mx-auto">
+    <div class="card">
+        <!-- Header -->
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h4>All Contacts</h4>
+            <a href="add-new-contact.html" class="btn btn-add-new rounded">
+                <i class="bi bi-plus-circle me-1"></i> Add New
+            </a href="add-new-contact.html">
+        </div>
+
+        <!-- Table -->
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col" width="5%">#</th>
+                        <th scope="col" width="15%">First Name</th>
+                        <th scope="col" width="15%">Last Name</th>
+                        <th scope="col" width="25%">Email</th>
+                        <th scope="col" width="15%">Phone</th>
+                        <th scope="col" width="15%">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Alfred</td>
+                        <td>Kuhlman</td>
+                        <td>alfred@test.com</td>
+                        <td>98989898</td>
+                        <td>
+                            <a href="contact-details.html" class="action-btn btn-view" title="View"><i class="bi bi-eye-fill"></i></a>
+                            <a href="update-form.html" class="action-btn btn-edit" title="Edit"><i class="bi bi-pencil-square"></i></a>
+                            <a href="" class="action-btn btn-delete" title="Delete"><i class="bi bi-x-lg"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Frederick</td>
+                        <td>Jerde</td>
+                        <td>frederick@test.com</td>
+                        <td>54545454</td>
+                        <td>
+                            <button class="action-btn btn-view" title="View"><i class="bi bi-eye-fill"></i></button>
+                            <button class="action-btn btn-edit" title="Edit"><i class="bi bi-pencil-square"></i></button>
+                            <button class="action-btn btn-delete" title="Delete"><i class="bi bi-x-lg"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Joannie</td>
+                        <td>McLaughlin</td>
+                        <td>joannie@test.com</td>
+                        <td>75757575</td>
+                        <td>
+                            <button class="action-btn btn-view" title="View"><i class="bi bi-eye-fill"></i></button>
+                            <button class="action-btn btn-edit" title="Edit"><i class="bi bi-pencil-square"></i></button>
+                            <button class="action-btn btn-delete" title="Delete"><i class="bi bi-x-lg"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Odie</td>
+                        <td>Koss</td>
+                        <td>odie@test.com</td>
+                        <td>64646464</td>
+                        <td>
+                            <button class="action-btn btn-view" title="View"><i class="bi bi-eye-fill"></i></button>
+                            <button class="action-btn btn-edit" title="Edit"><i class="bi bi-pencil-square"></i></button>
+                            <button class="action-btn btn-delete" title="Delete"><i class="bi bi-x-lg"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Edna</td>
+                        <td>Ondricka</td>
+                        <td>edna@test.com</td>
+                        <td>58595858</td>
+                        <td>
+                            <button class="action-btn btn-view" title="View"><i class="bi bi-eye-fill"></i></button>
+                            <button class="action-btn btn-edit" title="Edit"><i class="bi bi-pencil-square"></i></button>
+                            <button class="action-btn btn-delete" title="Delete"><i class="bi bi-x-lg"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap 5 JS Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
