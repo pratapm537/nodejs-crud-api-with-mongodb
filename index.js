@@ -25,12 +25,14 @@ app.post('/add-contact',(req,res) => {
 
 })
 
+app.get('/delete-contact', (req,res) => {})
+
 app.get('/update-contact', (req,res) => {
     res.send("Welcome to Update Contact Page")
 })
 
 app.post('/update-contact', (res,res) => {
-    
+
 })
 
 
