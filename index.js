@@ -1,6 +1,7 @@
 import express from "express"
 import dotevn from "dotenv"
 import mongoose from "mongoose"
+import Contact from "./models/contacts.models.js"
 
 dotevn.config({
     path: "./.env"
