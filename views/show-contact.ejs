@@ -20,35 +20,30 @@
         <!-- Body -->
         <div class="card-body">
             
-            <!-- First Name -->
-            <div class="row detail-row">
-                <div class="col-sm-3 detail-label">First Name</div>
-                <div class="col-sm-9 detail-value">Alfred</div>
-            </div>
-
-            <!-- Last Name -->
-            <div class="row detail-row">
-                <div class="col-sm-3 detail-label">Last Name</div>
-                <div class="col-sm-9 detail-value">Kuhlman</div>
-            </div>
-
-            <!-- Email -->
-            <div class="row detail-row">
-                <div class="col-sm-3 detail-label">Email</div>
-                <div class="col-sm-9 detail-value">alfred@test.com</div>
-            </div>
-
-            <!-- Phone -->
-            <div class="row detail-row">
-                <div class="col-sm-3 detail-label">Phone</div>
-                <div class="col-sm-9 detail-value">+6286767565656</div>
-            </div>
-
-            <!-- Address -->
-            <div class="row detail-row">
-                <div class="col-sm-3 detail-label">Address</div>
-                <div class="col-sm-9 detail-value">Lorem ipsum dolor</div>
-            </div>
+            <table class="table table-bordered align-middle mb-4">
+                <tbody>
+                    <tr>
+                        <th scope="row" class="detail-label">First Name</th>
+                        <td class="detail-value"><%= contact.first_name  %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="detail-label">Last Name</th>
+                        <td class="detail-value"><%= contact.last_name  %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="detail-label">Email</th>
+                        <td class="detail-value"><%= contact.email  %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="detail-label">Phone</th>
+                        <td class="detail-value"><%= contact.phone  %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="detail-label">Address</th>
+                        <td class="detail-value"><%= contact.address  %></td>
+                    </tr>
+                </tbody>
+            </table>
 
             <hr>
 
@@ -56,8 +51,8 @@
             <div class="row mt-3">
                 <div class="col-sm-3"></div>
                 <div class="col-sm-9">
-                    <a href="/update-contact" class="btn btn-custom btn-edit-action me-2">Edit</a >
-                    <a href="/delete-contact" class="btn btn-custom btn-delete-action me-2">Delete</a >
+                    <a href="/update-contact/<%= contact.id  %>" class="btn btn-custom btn-edit-action me-2">Edit</a >
+                    <a href="/delete-contact/<%= contact.id  %>" class="btn btn-custom btn-delete-action me-2">Delete</a >
                     <a href="/" class="btn btn-custom btn-cancel-action">Cancel</a >
                 </div>
             </div>

@@ -36,71 +36,26 @@
                         <th scope="col" width="5%">#</th>
                         <th scope="col" width="15%">First Name</th>
                         <th scope="col" width="15%">Last Name</th>
-                        <th scope="col" width="25%">Email</th>
+                        <th scope="col" width="15%">Email</th>
                         <th scope="col" width="15%">Phone</th>
                         <th scope="col" width="15%">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <% contacts.forEach(contact => { %>
                     <tr>
                         <td>1</td>
-                        <td>Alfred</td>
-                        <td>Kuhlman</td>
-                        <td>alfred@test.com</td>
-                        <td>98989898</td>
+                        <td><%= contact.first_name  %></td>
+                        <td><%= contact.last_name  %></td>
+                        <td><%= contact.email  %></td>
+                        <td><%= contact.phone  %></td>
+                        <td><%= contact.address  %></td>
                         <td>
-                            <a href="/show-contact" class="action-btn btn-view" title="View"><i class="bi bi-eye-fill"></i></a>
-                            <a href="/update-contact" class="action-btn btn-edit" title="Edit"><i class="bi bi-pencil-square"></i></a>
-                            <a href="/delete-contact" class="action-btn btn-delete" title="Delete"><i class="bi bi-x-lg"></i></a>
+                            <a href="/show-contact/<%= contact._id  %>" class="action-btn btn-view" title="View"><i class="bi bi-eye-fill"></i></a>
+                            <a href="/update-contact/<%= contact._id  %>" class="action-btn btn-edit" title="Edit"><i class="bi bi-pencil-square"></i></a>
+                            <a href="/delete-contact/<%= contact._id  %>" class="action-btn btn-delete" title="Delete"><i class="bi bi-x-lg"></i></a>
                         </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Frederick</td>
-                        <td>Jerde</td>
-                        <td>frederick@test.com</td>
-                        <td>54545454</td>
-                        <td>
-                            <button class="action-btn btn-view" title="View"><i class="bi bi-eye-fill"></i></button>
-                            <button class="action-btn btn-edit" title="Edit"><i class="bi bi-pencil-square"></i></button>
-                            <button class="action-btn btn-delete" title="Delete"><i class="bi bi-x-lg"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Joannie</td>
-                        <td>McLaughlin</td>
-                        <td>joannie@test.com</td>
-                        <td>75757575</td>
-                        <td>
-                            <button class="action-btn btn-view" title="View"><i class="bi bi-eye-fill"></i></button>
-                            <button class="action-btn btn-edit" title="Edit"><i class="bi bi-pencil-square"></i></button>
-                            <button class="action-btn btn-delete" title="Delete"><i class="bi bi-x-lg"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Odie</td>
-                        <td>Koss</td>
-                        <td>odie@test.com</td>
-                        <td>64646464</td>
-                        <td>
-                            <button class="action-btn btn-view" title="View"><i class="bi bi-eye-fill"></i></button>
-                            <button class="action-btn btn-edit" title="Edit"><i class="bi bi-pencil-square"></i></button>
-                            <button class="action-btn btn-delete" title="Delete"><i class="bi bi-x-lg"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Edna</td>
-                        <td>Ondricka</td>
-                        <td>edna@test.com</td>
-                        <td>58595858</td>
-                        <td>
-                            <button class="action-btn btn-view" title="View"><i class="bi bi-eye-fill"></i></button>
-                            <button class="action-btn btn-edit" title="Edit"><i class="bi bi-pencil-square"></i></button>
-                            <button class="action-btn btn-delete" title="Delete"><i class="bi bi-x-lg"></i></button>
-                        </td>
+                    <% }) %>
                     </tr>
                 </tbody>
             </table>
