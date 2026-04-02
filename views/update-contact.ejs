@@ -17,16 +17,16 @@
         <div class="card-header">
             <h4>Update Contact</h4>
         </div>
-
+   
         <!-- Form Body -->
         <div class="card-body">
-            <form action="#" method="POST">
+            <form action="/update-contact/<%= contact._id  %>" method="POST">
                 
                 <!-- First Name -->
                 <div class="row mb-4 align-items-center">
                     <label for="firstName" class="col-sm-3 col-form-label">First Name</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="firstName">
+                        <input type="text" name="first_name" value="<%= contact.first_name  %>" class="form-control" id="firstName">
                     </div>
                 </div>
 
@@ -34,7 +34,7 @@
                 <div class="row mb-4 align-items-center">
                     <label for="lastName" class="col-sm-3 col-form-label">Last Name</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="lastName">
+                        <input type="text" name="last_name" value="<%= contact.last_name  %>" class="form-control" id="lastName">
                     </div>
                 </div>
 
@@ -42,7 +42,7 @@
                 <div class="row mb-4 align-items-center">
                     <label for="email" class="col-sm-3 col-form-label">Email</label>
                     <div class="col-sm-9">
-                        <input type="email" class="form-control" id="email">
+                        <input type="email" name="email" value="<%= contact.email  %>" class="form-control" id="email">
                     </div>
                 </div>
 
@@ -50,7 +50,7 @@
                 <div class="row mb-4 align-items-center">
                     <label for="phone" class="col-sm-3 col-form-label">Phone</label>
                     <div class="col-sm-9">
-                        <input type="tel" class="form-control" id="phone">
+                        <input type="text" name="phone" value="<%= contact.phone  %>" class="form-control" id="phone">
                     </div>
                 </div>
 
@@ -58,7 +58,7 @@
                 <div class="row mb-4">
                     <label for="address" class="col-sm-3 col-form-label">Address</label>
                     <div class="col-sm-9">
-                        <textarea class="form-control" id="address" rows="4"></textarea>
+                        <textarea class="form-control" name="address" id="address" rows="4"><%= contact.address  %></textarea>
                     </div>
                 </div>
 

@@ -45,12 +45,14 @@ app.post('/add-contact',async (req,res) => {
 
 })
 
-app.get('/update-contact/:id', (req,res) => {
-    res.render('update-contact')
+app.get('/update-contact/:id', async (req,res) => {
+    const contact = await Contact.findById(req.params.id)
+    res.render('update-contact',{contact})
 })
 
-app.post('/update-contact/:id', (req,res) => {
-    
+app.post('/update-contact/:id', async (req,res) => {
+    await Contact.findByIdAndUpdate(req.params.id, req.body)
+    res.redirect('/')
 })
 
 app.get('/delete-contact/:id', (req,res) => {})
