@@ -38,7 +38,10 @@ app.get('/add-contact', (req,res) => {
     res.render('add-contact')
 })
 
-app.post('/add-contact',(req,res) => {
+app.post('/add-contact',async (req,res) => {
+    await Contact.create(req.body) 
+    // res.send(req.body)
+    res.redirect('/')
 
 })
 
