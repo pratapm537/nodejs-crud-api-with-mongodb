@@ -1,0 +1,7 @@
+db.contacts.insertOne({
+    first_name: "Neha",
+    last_name: "Kumari",
+    email: "nehakur856@gmail.com",
+    phone: 8800863307,
+    address: "#578, KT Road, New Delhi"
+})
