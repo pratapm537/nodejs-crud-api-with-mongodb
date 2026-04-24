@@ -1,65 +1,106 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Contacts</title>
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="home.css">
-    
-</head>
-<body>
+<%- include('partials/header', { title: 'Dashboard' }) %>
 
-<div class="container-fluid max-w-7xl mx-auto">
-    <div class="card">
-        <!-- Header -->
-        <div class="card-header d-flex justify-content-between align-items-center">
-            <h4>All Contacts</h4>
-            <a href="/add-contact" class="btn btn-add-new rounded">
-                <i class="bi bi-plus-circle me-1"></i> Add New
-            </a>
-        </div>
-
-        <!-- Table -->
-        <div class="table-responsive">
-            <table class="table table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col" width="5%">#</th>
-                        <th scope="col" width="15%">First Name</th>
-                        <th scope="col" width="15%">Last Name</th>
-                        <th scope="col" width="15%">Email</th>
-                        <th scope="col" width="15%">Phone</th>
-                        <th scope="col" width="20%">Address</th>
-                        <th scope="col" width="20%">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% let srno = 1 %>
-                    <% contacts.forEach(contact => { %>
-                    <tr>
-                        <td><%= srno++  %></td>
-                        <td><%= contact.first_name  %></td>
-                        <td><%= contact.last_name  %></td>
-                        <td><%= contact.email  %></td>
-                        <td><%= contact.phone  %></td>
-                        <td><%= contact.address  %></td>
-                        <td>
-                            <a href="/show-contact/<%= contact._id  %>" class="action-btn btn-view" title="View"><i class="bi bi-eye-fill"></i></a>
-                            <a href="/update-contact/<%= contact._id  %>" class="action-btn btn-edit" title="Edit"><i class="bi bi-pencil-square"></i></a>
-                            <a href="/delete-contact/<%= contact._id  %>" class="action-btn btn-delete" title="Delete"><i class="bi bi-x-lg"></i></a>
-                        </td>
-                    </tr>
-                    <% }) %>
-            </table>
-        </div>
+<div class="hero-section">
+    <div class="container">
+        <h1 class="hero-title">
+            <span style="color: var(--text-primary);">Manage Connections</span><br>
+            <span style="color: var(--accent-primary);">Effortlessly</span>
+        </h1>
+        <p class="hero-subtitle mt-3">
+            Build your network with our premium, elegant contact manager. Add, update, and securely organize your professional contacts in one clean space.
+        </p>
+        <a href="/add-contact" class="btn btn-primary-custom px-5 py-3 fs-5 mt-2 shadow-sm d-inline-flex align-items-center gap-2">
+            <i class="bi bi-person-plus-fill"></i> Add New Contact
+        </a>
+        <a href="/download-pdf" class="btn btn-outline-secondary px-5 py-3 fs-5 mt-2 shadow-sm d-inline-flex align-items-center gap-2 ms-3" style="border-radius: 12px; transition: all 0.3s ease; border-color: rgba(79, 70, 229, 0.5);">
+            <i class="bi bi-file-earmark-pdf-fill" style="color: var(--accent-primary);"></i> Download All Records (PDF)
+        </a>
     </div>
 </div>
 
-<!-- Bootstrap 5 JS Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+<div class="container pb-5">
+    <!-- Header / Title for Table -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="mb-0 fw-bold d-flex align-items-center gap-2" style="font-family: 'Outfit', sans-serif;">
+            <i class="bi bi-people fw-bold text-secondary"></i> All Contacts
+        </h3>
+        <span class="badge" style="background: rgba(79, 70, 229, 0.1); color: var(--accent-primary); font-size: 0.9rem; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid rgba(79, 70, 229, 0.2);">
+            Total: <%= typeof totalContacts !== 'undefined' ? totalContacts : contacts.length %>
+        </span>
+    </div>
+
+    <!-- Table Card -->
+    <div class="glass-card p-0 overflow-hidden">
+        <div class="table-responsive">
+            <table class="table table-glass table-hover mb-0">
+                <thead>
+                    <tr>
+                        <th scope="col" width="5%" class="ps-4">No.</th>
+                        <th scope="col" width="15%">First Name</th>
+                        <th scope="col" width="15%">Last Name</th>
+                        <th scope="col" width="25%">Email Address</th>
+                        <th scope="col" width="15%">Phone</th>
+                        <th scope="col" width="25%" class="pe-4">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (contacts.length === 0) { %>
+                        <tr>
+                            <td colspan="6" class="text-center py-5 text-muted">
+                                <i class="bi bi-inbox fs-1 d-block mb-3" style="color: var(--border-color);"></i>
+                                No contacts found. Click "Add New Contact" to get started.
+                            </td>
+                        </tr>
+                    <% } else { %>
+                        <% let srno = (typeof currentPage !== 'undefined' ? (currentPage - 1) * 5 : 0) + 1 %>
+                        <% contacts.forEach(contact => { %>
+                        <tr>
+                            <td class="ps-4"><span class="text-muted fw-semibold"><%= String(srno++).padStart(2, '0') %></span></td>
+                            <td class="fw-semibold text-dark"><%= contact.first_name %></td>
+                            <td class="fw-semibold text-dark"><%= contact.last_name %></td>
+                            <td><a href="mailto:<%= contact.email %>" style="color: var(--text-secondary); text-decoration: none;"><%= contact.email %></a></td>
+                            <td style="color: var(--text-secondary);"><%= contact.phone %></td>
+                            <td class="pe-4">
+                                <div class="d-flex align-items-center">
+                                    <a href="/show-contact/<%= contact._id %>" class="action-btn view" title="View Profile">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+                                    <a href="/update-contact/<%= contact._id %>" class="action-btn edit" title="Edit Contact">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </a>
+                                    <a href="/delete-contact/<%= contact._id %>" class="action-btn delete" title="Delete Contact" onclick="return confirm('Are you sure you want to delete this contact?');">
+                                        <i class="bi bi-trash3"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <% }) %>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Pagination -->
+    <% if (typeof totalPages !== 'undefined' && totalPages > 1) { %>
+    <nav class="mt-4" aria-label="Table pagination">
+        <ul class="pagination justify-content-center">
+            <li class="page-item <%= currentPage === 1 ? 'disabled' : '' %>">
+                <a class="page-link" href="/?page=<%= currentPage - 1 %>" style="border-radius: 8px 0 0 8px; color: var(--text-primary); border-color: var(--border-color);">Previous</a>
+            </li>
+            
+            <% for(let i = 1; i <= totalPages; i++) { %>
+                <li class="page-item <%= currentPage === i ? 'active' : '' %>">
+                    <a class="page-link" href="/?page=<%= i %>" style="<%= currentPage === i ? 'background-color: var(--accent-primary); border-color: var(--accent-primary); color: white;' : 'color: var(--text-primary); border-color: var(--border-color);' %>"><%= i %></a>
+                </li>
+            <% } %>
+
+            <li class="page-item <%= currentPage === totalPages ? 'disabled' : '' %>">
+                <a class="page-link" href="/?page=<%= currentPage + 1 %>" style="border-radius: 0 8px 8px 0; color: var(--text-primary); border-color: var(--border-color);">Next</a>
+            </li>
+        </ul>
+    </nav>
+    <% } %>
+</div>
+
+<%- include('partials/footer') %>

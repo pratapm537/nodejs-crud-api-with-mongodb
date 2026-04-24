@@ -1,77 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Details</title>
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/show-contact.css">
-   
-</head>
-<body>
+<%- include('partials/header', { title: 'Contact Profile' }) %>
 
-<header class="app-header">
-    <h1 class="app-brand">CONTACT APP</h1>
-</header>
-
-<div class="container-fluid">
-    <div class="card">
-        <!-- Header -->
-        <div class="card-header">
-            <h4>Contact Details</h4>
-        </div>
-
-        <!-- Body -->
-        <div class="card-body">
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
             
-            <!-- First Name -->
-            <div class="row detail-row">
-                <div class="col-sm-3 detail-label">First Name</div>
-                <div class="col-sm-9 detail-value"><%= contact.first_name  %></div>
+            <div class="d-flex align-items-center mb-4 gap-3">
+                <a href="/" class="btn btn-outline-custom rounded-circle" style="width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; padding: 0;">
+                    <i class="bi bi-arrow-left"></i>
+                </a>
+                <h2 class="mb-0 fw-bold text-dark">Contact Profile</h2>
             </div>
+            
+            <div class="glass-card overflow-hidden bg-white border-0 shadow-sm">
+                <!-- Profile Header Banner -->
+                <div style="height: 120px; background-color: var(--accent-primary); position: relative;">
+                    <div style="position: absolute; bottom: -40px; left: 40px; width: 80px; height: 80px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 4px solid white; box-shadow: var(--shadow-sm);">
+                        <i class="bi bi-person-fill" style="font-size: 2.5rem; color: var(--text-secondary);"></i>
+                    </div>
+                </div>
 
-            <!-- Last Name -->
-            <div class="row detail-row">
-                <div class="col-sm-3 detail-label">Last Name</div>
-                <div class="col-sm-9 detail-value"><%= contact.last_name  %></div>
-            </div>
+                <!-- Profile Content -->
+                <div class="p-4 p-md-5 pt-5 mt-2">
+                    <h3 class="fw-bold mb-1 text-dark"><%= contact.first_name %> <%= contact.last_name %></h3>
+                    <p class="text-muted mb-4"><i class="bi bi-circle-fill me-2" style="font-size: 0.5rem; color: var(--success); vertical-align: middle;"></i> Active Connection</p>
 
-            <!-- Email -->
-            <div class="row detail-row">
-                <div class="col-sm-3 detail-label">Email</div>
-                <div class="col-sm-9 detail-value"><%= contact.email  %></div>
-            </div>
+                    <div class="row g-4 border-top pt-4">
+                        <div class="col-sm-6">
+                            <p class="text-secondary fw-semibold mb-1 fs-6">Email Address</p>
+                            <p class="fs-6 mb-0 text-break">
+                                <a href="mailto:<%= contact.email %>" style="color: var(--text-primary); text-decoration: none;"><%= contact.email %></a>
+                            </p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="text-secondary fw-semibold mb-1 fs-6">Phone Number</p>
+                            <p class="fs-6 mb-0">
+                                <a href="tel:<%= contact.phone %>" style="color: var(--text-primary); text-decoration: none;"><%= contact.phone %></a>
+                            </p>
+                        </div>
+                        <div class="col-12">
+                            <p class="text-secondary fw-semibold mb-1 fs-6">Physical Address</p>
+                            <p class="fs-6 mb-0 text-dark" style="line-height: 1.6;">
+                                <%= contact.address %>
+                            </p>
+                        </div>
+                    </div>
+                </div>
 
-            <!-- Phone -->
-            <div class="row detail-row">
-                <div class="col-sm-3 detail-label">Phone</div>
-                <div class="col-sm-9 detail-value"><%= contact.phone  %></div>
-            </div>
-
-            <!-- Address -->
-            <div class="row detail-row">
-                <div class="col-sm-3 detail-label">Address</div>
-                <div class="col-sm-9 detail-value"><%= contact.address  %></div>
-            </div>
-
-            <hr>
-
-            <!-- Actions -->
-            <div class="row mt-3">
-                <div class="col-sm-3"></div>
-                <div class="col-sm-9">
-                    <a href="/update-contact/<%= contact._id  %>" class="btn btn-custom btn-edit-action me-2">Edit</a>
-                    <a href="/delete-contact/<%= contact._id  %>" class="btn btn-custom btn-delete-action me-2">Delete</a>
-                    <a href="/" class="btn btn-custom btn-cancel-action">Cancel</a>
+                <!-- Profile Actions -->
+                <div class="bg-light p-4 d-flex justify-content-end gap-3 border-top">
+                    <a href="/update-contact/<%= contact._id %>" class="btn btn-outline-custom d-flex align-items-center gap-2 bg-white">
+                        <i class="bi bi-pencil-square"></i> Edit
+                    </a>
+                    <a href="/delete-contact/<%= contact._id %>" class="btn btn-danger d-flex align-items-center gap-2 shadow-sm" onclick="return confirm('Are you sure you want to delete this contact?');">
+                        <i class="bi bi-trash3"></i> Delete
+                    </a>
                 </div>
             </div>
-
+            
         </div>
     </div>
 </div>
 
-<!-- Bootstrap 5 JS Bundle -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+<%- include('partials/footer') %>
